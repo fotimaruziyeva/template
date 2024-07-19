@@ -7,6 +7,6 @@ urlpatterns = [
     path('contact/',contact_view,name='contact-page'),
     path('books/',books_view,name='books-page'),
     path('gallery/',gallery_view,name='gallery-page'),
-     path('portfolio/',portfolio_view,name='portfolio-page'),
-     path('blog-since/',blog_view,name='blog-page')
+    path('portfolio/',portfolio_view,name='portfolio-page'),
+    path('blog-since/',blog_view,name='blog-page')
 ]
