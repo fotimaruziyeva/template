@@ -1,20 +1,47 @@
 from django.shortcuts import render
-from .models import BlogPost
+from portfolio.forms import ContactForm
+from .models import Gallery,Book,Blog
+from django.views.generic.edit import FormView
+class ContactFormView(FormView):
+    template_name="contact.html"
+    forms_class=ContactForm
+    success_url='/'
 def home_view(request):
-    blog=BlogPost.objects.all()
-    context={
-        'blog':blog
-    }
-    return render(request=request,template_name='index.html',context=context)
+    return render(request=request,template_name='index.html')
+
 def contact_view(request):
  return render(request=request,template_name='contact.html')
+
 def about_view(request):
  return render(request=request,template_name='about.html')
+
 def books_view(request):
- return render(request=request,template_name='books.html')
+      books = Book.objects.all()
+      context = {
+          "books": books,
+      }
+      return render(request=request,template_name='books.html',context=context)
+
 def gallery_view(request):
- return render(request=request,template_name='gallery.html')
+    gallery = Gallery.objects.all()
+    context = {
+        "gallery": gallery,
+    }
+    return render(request, template_name='gallery.html', context=context)
+
 def portfolio_view(request):
  return render(request=request,template_name='portfolio.html')
+
 def blog_view(request):
- return render(request=request,template_name='blog-single.html')
+    blog=Blog.objects.all()
+    context ={
+        "blog":blog,
+    }
+    return render(request=request,template_name='blog-masonry.html',context=context)
+
+def gallery_single_view(request):
+    gallery = Gallery.objects.all()
+    context = {
+        "gallery": gallery,
+    }
+    return render(request=request,template_name='gallery-single.html',context=context)
