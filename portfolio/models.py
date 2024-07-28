@@ -52,3 +52,8 @@ class Blog(models.Model):
     title=models.CharField(max_length=50)
     created_date=models.DateTimeField(auto_now=True)
     description = models.TextField()
+    
+class About(models.Model):
+    image=models.ImageField(upload_to='Images/about')
+    title=models.CharField(max_length=70)
+    description=models.TextField()

@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from portfolio.forms import ContactForm
-from .models import Gallery,Book,Blog
+from .models import Gallery,Book,Blog,About
 from django.views.generic.edit import FormView
 class ContactFormView(FormView):
     template_name="contact.html"
@@ -13,7 +13,11 @@ def contact_view(request):
  return render(request=request,template_name='contact.html')
 
 def about_view(request):
- return render(request=request,template_name='about.html')
+     about = About.objects.all()
+     context = {
+          "about": about,
+      }
+     return render(request=request,template_name='about.html', context=context)
 
 def books_view(request):
       books = Book.objects.all()
