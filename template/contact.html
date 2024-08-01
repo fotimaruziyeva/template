@@ -1,92 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block title %}  {% endblock title %}
+{% block title %} Portfolio {% endblock title %}
 {% block content %}
-        <!-- header -->
-        
-         <!-- page -->
-    <div id="page" class="hfeed site">
-        
-        <!-- header -->
-        <header id="masthead" class="site-header" role="banner">
- 				
-                <!-- site-navigation -->
-                <nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
-                    
-                    <a class="menu-toggle"><span class="lines"></span></a>
-                    
-                    <!-- nav-menu -->
-                    <div class="nav-menu">
-                        <ul>
-                            <li><a href="{% url 'home-page'%}">Home</a>
-                                <!-- level 2 -->
-                            </li>
-                            <li><a href="{% url 'blog-page'%}">Blogs</a>
-                            <li><a href="{% url 'portfolio-page' %}">Portfolio</a></li>
-                            <li><a href="{% url 'books-page'%}">Books</a></li>
-                            <li><a href="{% url 'gallery-page'%}">Gallery</a></li>
-                            <li><a href="{% url 'about-page'%}">About Me</a>
-                                <!-- level 2 -->
-                                        
-                            <li><a href="{% url 'contact-page'%}">Contact</a></li>
-                        </ul>
-                    </div>
-                    <!-- nav-menu -->
-                    
-                    <a class="search-toggle toggle-link"></a>
-                                        
-                    <!-- search-container -->
-                    <div class="search-container">
-                        
-                        <div class="search-box">
-                            <form role="search" method="get" class="search-form" action="#">
-                                <label>Search for
-                                    <input type="search" id="search-field" placeholder="type and hit enter" name="s">
-                                </label>
-                                <input type="submit" class="search-submit" value="Search">
-                            </form>
-                        </div>
-                    
-                    </div>
-                    <!-- search-container -->
-                    
-                    <!-- social-container -->
-                    <div class="social-container">
-                        
-                        <ul class="social">
-                            <li><a class="facebook" href="#"></a></li>
-                            <li><a class="twitter" href="#"></a></li>
-                            <li><a class="vine" href="#"></a></li>
-                            <li><a class="dribbble" href="#"></a></li>
-                            <li><a class="instagram" href="#"></a></li>
-                        </ul>
-                      
-                        
-                    </div>
-                    <!-- social-container -->
-                    
-                </nav>
-                <!-- site-navigation -->
-                           
-                <!-- site-title -->
-                <h1 class="site-title">
-                	<a href="{% url 'home-page'%}" rel="home">
-                    	<img src="{% static 'images/site/logo.png'%}" alt="logo">
-                        <!--EDITOR-->
-                    </a>
-                </h1>
-                <!-- site-title -->
-                
-                
-                <!--<h1 class="site-title">
-                	<a href="../index.html" rel="home">
-                        EDITOR
-                    </a>
-                </h1>
-                <p class="site-description">just another minimalist theme.</p>-->
 
-                
-        </header>
+
+
+        
+        
         
         
         <!-- site-main -->
@@ -94,31 +14,31 @@
         
         
         
-        	            
+                      
             <!-- primary -->
-        	<div id="primary" class="content-area">
-            	
+          <div id="primary" class="content-area">
+              
                 <!-- site-content -->
                 <div id="content" class="site-content" role="main">
                 
                 
                 
-				
-				
-					<!-- InstanceBeginEditable name="FeaturedContent" -->
-					
-					<!-- InstanceEndEditable -->
-                	
+        
+        
+          <!-- InstanceBeginEditable name="FeaturedContent" -->
+          
+          <!-- InstanceEndEditable -->
+                  
                     
                     
                     <!-- layout-fixed -->
-                	<div class="layout-fixed">
+                  <div class="layout-fixed">
                     
                     
                     
-						<!-- InstanceBeginEditable name="LayoutFixedContent" -->
+            <!-- InstanceBeginEditable name="LayoutFixedContent" -->
                 
-                	
+                  
                     
                     
                         <!-- .hentry -->
@@ -148,7 +68,28 @@
                                     <li><a class="instagram" href="#"></a></li>
                                     <li><a class="lastfm" href="#"></a></li>
                                     <li><a class="vine" href="#"></a></li>
-                                 
+                                    <!--<li><a class="rss" href="#"></a></li>
+                                    <li><a class="behance" href="#"></a></li>
+                                    <li><a class="vimeo" href="#"></a></li>
+                                    <li><a class="forrst" href="#"></a></li>
+                                    <li><a class="skype" href="#"></a></li>
+                                    <li><a class="picasa" href="#"></a></li>
+                                    <li><a class="youtube" href="#"></a></li>
+                                    <li><a class="flickr" href="#"></a></li>
+                                    <li><a class="tumblr" href="#"></a></li>
+                                    <li><a class="blogger" href="#"></a></li>
+                                    <li><a class="delicious" href="#"></a></li>
+                                    <li><a class="digg" href="#"></a></li>
+                                    <li><a class="friendfeed" href="#"></a></li>
+                                    <li><a class="wordpress" href="#"></a></li>
+                                    <li><a class="stack-overflow" href="#"></a></li>
+                                    <li><a class="foursquare" href="#"></a></li>
+                                    <li><a class="xing" href="#"></a></li>
+                                    <li><a class="weibo" href="#"></a></li>
+                                    <li><a class="soundcloud" href="#"></a></li>
+
+                                    <li><a class="fivehundredpx" href="#"></a></li>
+                                    <li><a class="slideshare" href="#"></a></li>-->
                                 </ul>
                                 <!-- SOCIAL -->
                                 
@@ -157,33 +98,40 @@
                                   <!-- .contact-form -->
                                   <div class="contact-form">
                                     
-                                      <form id="contact-form" class="validate-form" method="post" action="{% url 'contact-page'%}">
-            
+                                      <form  method="post" action="{% url 'contact-page' %}">
+                                        {% csrf_token %}
+                                        {{ form.as_p }}
+                                        <!-- enter mail subject here
                                         <input type="hidden" name="subject" id="subject" value="You have a new message from Editor!">
                                         
                                         <p>
                                           <label for="name">NAME</label>
-                                          <input type="text" name="name" id="name">
+                                          <input type="text" name="name" id="name" class="required">
                                         </p>
                                         
                                         <p>
                                           <label for="email">EMAIL</label>
-                                          <input type="text" name="email">
-                                        </p>
-                                        <p>
-                                          <label for="content">MESSAGE</label>
-                                          <textarea name="content" id="message"></textarea>
-                                        </p>
+                                          <input type="text" name="email" id="email" class="required email">
+                                        </p> -->
+                                        
+                                        <!-- <p class="antispam">Leave this empty if you are a human :
+                      <br /><input name="content" />
+                                        </p> -->
+
+                                        <!-- <p>
+                                          <label for="message">MESSAGE</label>
+                                          <textarea name="content" id="message" class="required"></textarea>
+                                        </p> -->
                                        
                                         <p>
-                                          <button class="submit button"><span class="submit-label">Submit</span><span class="submit-status"></span></button>
+                                          <button  type="submit" >Submit</button>
                                         </p>
                                         
                                       </form>
                                       
                                   </div>
                                   <!-- .contact-form -->
-                                	
+                                  
                                
                             </div>
                             <!-- .entry-content -->
@@ -191,18 +139,18 @@
                             
                         </article>
                         <!-- .hentry -->
-                	
+                  
                     
                 
-                		<!-- InstanceEndEditable -->
-                    	
+                    <!-- InstanceEndEditable -->
+                      
                         
-                    	
+                      
                     </div>
                     <!-- layout-fixed -->
                 
                 
-                	
+                  
                 
                 </div>
                 <!-- site-content -->
@@ -215,6 +163,4 @@
         
         </div>
         <!-- site-main -->
-        
-        
         {% endblock content %}

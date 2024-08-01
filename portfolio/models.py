@@ -5,6 +5,7 @@ from django.contrib.contenttypes.fields import GenericRelation
 from django.utils.text import slugify
 
 
+
 class Contact(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=50)
@@ -12,16 +13,29 @@ class Contact(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.email}"
-class Portfolio(models.Model):
-    title=models.CharField(max_length=50)
-    image=models.ImageField(upload_to='Images/portfolio')
-    description=models.CharField(max_length=50)
-    created_date=models.DateTimeField(auto_now=True)
-    def __str__(self):
-        return f"{self.title} {self.created_date}"
+
+
 
 class Category(models.Model):
-    name=models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
+    def __str__(self):
+        return f"{self.name}"
+
+class PortfolioCategory(models.Model):
+    name = models.CharField(max_length=50)
+    def __str__(self):
+        return f"{self.name}"
+
+
+
+class Portfolio(models.Model):
+    image=models.ImageField(upload_to='Images/portfolio')
+    title=models.CharField(max_length=50)
+    description=models.CharField(max_length=50)
+    created_date=models.DateTimeField(auto_now=True)
+    categorys=models.ForeignKey(PortfolioCategory,on_delete=models.CASCADE)
+    def __str__(self):
+        return f"{self.title} {self.created_date}"
 
 class Comment(models.Model):
     full_name=models.CharField(max_length=50)

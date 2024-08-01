@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import  Contact,Book,Comment,Category,Gallery,Portfolio,Blog,About
+from .models import  Contact,Book,Comment,PortfolioCategory,Gallery,Portfolio,Blog,About,Category
 from django.utils.html import format_html
-# Register your models here.
-admin.site.register((Contact,Comment,Category,Gallery,Portfolio,Blog,About))
+admin.site.register((Contact,Comment,PortfolioCategory,Gallery,Portfolio,Blog,About,Category))
+
 
 @admin.register(Book)
 class BookAdmin(admin.ModelAdmin):
