@@ -150,7 +150,7 @@
                                             <h4>{{gallery.created_date}}</h4>
                                         </div>
                                     </div>
-                                    <a href="{% url 'gallery-single-page'%}"></a>
+                                    <a href="{% url 'gallery-single-page' gallery.pk %}"></a>
                                 </div>
                             </div>
                             {% endfor %}

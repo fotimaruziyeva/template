@@ -1,7 +1,8 @@
 from django.shortcuts import render
+from django.views.generic import DetailView
 from django.contrib import messages
 from portfolio.forms import ContactForm
-from .models import Gallery, Book, Blog, About,Portfolio,PortfolioCategory,Category
+from .models import Gallery, Book, Blog, About,Portfolio,PortfolioCategory,Category,Comment,GalleryCategory
 from django.views.generic.edit import FormView
 from .bot import send_message
 from django.views.generic.list import ListView
@@ -43,12 +44,19 @@ def books_view(request):
       }
       return render(request=request,template_name='books.html',context=context)
 
-def gallery_view(request):
-    gallery = Gallery.objects.all()
-    context = {
-        "gallery": gallery,
-    }
-    return render(request, template_name='gallery.html', context=context)
+# def gallery_view(request):
+#     gallery = Gallery.objects.all()
+#     context = {
+#         "gallery": gallery,
+#     }
+#   return render(request, template_name='gallery.html', context=context)
+
+class GalleryListView(ListView):
+    model = GalleryCategory
+    # paginate_by = 100  # if pagination is desired
+    context_object_name = 'gallery'
+    template_name = "gallery.html"
+
 class PortfolioListView(ListView):
     model = Portfolio
     # paginate_by = 100  # if pagination is desired
@@ -60,18 +68,45 @@ class PortfolioListView(ListView):
         context["categories"] = PortfolioCategory.objects.all()
         return context
 
-def blog_view(request):
-    blog=Blog.objects.all()
-    context ={
-        "blog":blog,
-    }
-    return render(request=request,template_name='blog-masonry.html',context=context)
+class BlogListView(ListView):
+    model = Blog
+    # paginate_by = 100  # if pagination is desired
+    context_object_name = 'blogs'
+    template_name = "blog.html"
 
-def gallery_single_view(request):
-    gallery = Gallery.objects.all()
-    context = {
-        "gallery": gallery,
-    }
-    return render(request=request,template_name='gallery-single.html',context=context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["categories"] = Category.objects.all()
+        return context
+
+class BlogDetailView(DetailView):
+    model = Blog
+    template_name = "blog-single.html"
+    context_object_name = "blog"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["comments"] = Comment.objects.filter(blog=context.get('blog'))
+        context['comments_count'] = Comment.objects.filter(blog=context.get('blog')).count()
+
+        return context
+class GalleryDetailView(DetailView):
+    model = GalleryCategory
+    template_name = "gallery-single.html"
+    context_object_name = "category"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["gallery"] = Gallery.objects.filter(category=context[self.context_object_name])
+        return context
+
+# def gallery_single_view(request):
+#     gallery = Gallery.objects.all()
+#     context = {
+#         "gallery": gallery,
+#     }
+#     return render(request=request,template_name='gallery-single.html',context=context)
 def portfolio_single_view(request):
     return render(request=request,template_name='portfolio-single.html')
+def blog_single_view(request):
+    return render(request=request,template_name='blog-single.html')
