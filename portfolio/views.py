@@ -50,12 +50,6 @@ def books_view(request):
       }
       return render(request=request,template_name='books.html',context=context)
 
-# def gallery_view(request):
-#     gallery = Gallery.objects.all()
-#     context = {
-#         "gallery": gallery,
-#     }
-#   return render(request, template_name='gallery.html', context=context)
 
 class GalleryListView(ListView):
     model = GalleryCategory
