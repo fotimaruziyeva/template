@@ -4,7 +4,74 @@
 {% block content %}
 
 
+ <!-- page -->
+ <div id="page" class="hfeed site">
+        
+  <!-- header -->
+  <header id="masthead" class="site-header" role="banner">
+           
+          <!-- site-navigation -->
+          <nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
+              
+              <a class="menu-toggle"><span class="lines"></span></a>
+              
+              <!-- nav-menu -->
+              <div class="nav-menu">
+                  <ul>
+                      <li><a href="#">Home</a>
+                          <!-- level 2 -->
+                      </li>
+                      <li><a href="{% url 'blog-page'%}">Blogs</a>
+                      <li><a href="{% url 'portfolio-page' %}">Portfolio</a></li>
+                      <li><a href="{% url 'books-page'%}">Books</a></li>
+                      <li><a href="{% url 'gallery-page'%}">Gallery</a></li>
+                      <li><a href="{% url 'about-page'%}">About Me</a>
+                          <!-- level 2 -->
+                                  
+                      <li><a href="{% url 'contact-page'%}">Contact</a></li>
+                  </ul>
+              </div>
+              <!-- nav-menu -->
+              
+            
+                                  
+              <!-- search-container -->
+             
+              <div class="social-container">
+                  
+                  <ul class="social">
+                      <li><a class="facebook" href="#"></a></li>
+                      <li><a class="twitter" href="#"></a></li>
+                      <li><a class="vine" href="#"></a></li>
+                      <li><a class="dribbble" href="#"></a></li>
+                      <li><a class="instagram" href="#"></a></li>
+                  </ul>
+                
+                  
+              </div>
+              <!-- social-container -->
+              
+          </nav>
+          <!-- site-navigation -->
+                     
+          <!-- site-title -->
+          <h1 class="site-title">
+              <a href="{% url 'home-page'%}" rel="home">
+                  <img src="{% static 'images/site/logo.png'%}" alt="logo">
+                  <!--EDITOR-->
+              </a>
+          </h1>
+          <!-- site-title -->
+          
+          
+          <!--<h1 class="site-title">
+              <a href="../index.html" rel="home">
+                  EDITOR
+              </a>
+          </h1>
+          <p class="site-description">just another minimalist theme.</p>-->
 
+          
         
         
         

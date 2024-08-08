@@ -32,24 +32,10 @@
                 </div>
                 <!-- nav-menu -->
                 
-                <a class="search-toggle toggle-link"></a>
+              
                                     
                 <!-- search-container -->
-                <div class="search-container">
-                    
-                    <div class="search-box">
-                        <form role="search" method="get" class="search-form" action="#">
-                            <label>Search for
-                                <input type="search" id="search-field" placeholder="type and hit enter" name="s">
-                            </label>
-                            <input type="submit" class="search-submit" value="Search">
-                        </form>
-                    </div>
-                
-                </div>
-                <!-- search-container -->
-                
-                <!-- social-container -->
+               
                 <div class="social-container">
                     
                     <ul class="social">
@@ -119,13 +105,13 @@
                                 <!-- .entry-meta -->
                                 <div class="entry-meta">
                                     <span class="cat-links">
-                                        <a href="{% url 'blog-page'%}" rel="category tag">{{ blog.title }}</a>
+                                        <a href="{% url 'blog-page'%}" rel="category tag">{{ blogs.title }}</a>
                                     </span>	
                                 </div>
                                 <!-- .entry-meta -->
                                 
                                 <!-- .entry-title -->
-                                <h1 class="entry-title"><a href="{% url 'blog-page'%}">{{ blog.description }}</a></h1>
+                                
                             </header>
                             <!-- .entry-header -->
                             
