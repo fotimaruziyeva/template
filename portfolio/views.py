@@ -27,7 +27,11 @@ class ContactFormView(FormView):
 
         return super().form_valid(form)
 def home_view(request):
-    return render(request=request,template_name='index.html')
+    blogs=Blog.objects.all()
+    context={
+        "blogs":blogs
+    }
+    return render(request=request,template_name='index.html',context=context)
 
 def contact_view(request):
  return render(request=request,template_name='contact.html')
