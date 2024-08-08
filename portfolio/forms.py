@@ -1,11 +1,12 @@
 from django.forms import ModelForm
 from django import forms
-from .models import Contact
+from .models import Contact,Comment
 
 class ContactForm(ModelForm):
+
     class Meta:
         model = Contact
-        fields = ["name","email","content"]
+        fields = ["name","email","content",]
     
     def clean(self):
  
@@ -31,4 +32,11 @@ class ContactForm(ModelForm):
                     'content is required'])
         return self.cleaned_data
     
+    
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        
+        fields = ['full_name','email','message',]
+
 

@@ -36,14 +36,14 @@ class Portfolio(models.Model):
         return f"{self.title} {self.created_date}"
 class Blog(models.Model):
     image = models.ImageField(upload_to='Images/blog')
-    title = models.CharField(max_length=50)
+    title = models.CharField(max_length=80)
     created_date = models.DateTimeField(auto_now=True)
-    description = models.TextField()
+    description = RichTextField()
 
     def __str__(self):
-        return f"{self.title} {self.description} "
+        return f"{self.title} "
 class Comment(models.Model):
-    image = models.ImageField(upload_to='images/', default='default.jpg') 
+    image = models.ImageField(upload_to='comments/', null=True, blank=True)
     full_name = models.CharField(max_length=50)
     created_date = models.DateTimeField(auto_now=True)
     email = models.EmailField(max_length=100)
