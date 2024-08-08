@@ -29,7 +29,7 @@ class PortfolioCategory(models.Model):
 class Portfolio(models.Model):
     image=models.ImageField(upload_to='Images/portfolio')
     title=models.CharField(max_length=50)
-    description=models.CharField(max_length=50)
+    description=models.CharField(max_length=150)
     created_date=models.DateTimeField(auto_now=True)
     category=models.ForeignKey(PortfolioCategory,on_delete=models.CASCADE)
     def __str__(self):
